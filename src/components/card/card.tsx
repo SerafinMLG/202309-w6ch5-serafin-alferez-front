@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Hobbie } from '../../model/hobbies';
 
 type Props = {
@@ -14,6 +15,9 @@ export function Card({ info }: Props) {
           alt={info.topic}
           className={`character__picture`}
         />
+        <Link to={'/details/' + hobbie.name}
+        style={{ textDecoration: 'none' }}
+      ></Link>
         <div className="card-body">
           <h2 className="character__name card-title h4">
             {info.name}
