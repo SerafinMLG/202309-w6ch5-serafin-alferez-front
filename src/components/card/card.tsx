@@ -28,5 +28,3 @@ export function Card({ info }: Props) {
     </li>
   );
 }
-
-

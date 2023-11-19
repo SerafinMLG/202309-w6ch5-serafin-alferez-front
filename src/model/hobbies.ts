@@ -5,4 +5,3 @@ export type Hobbie = {
   place: string,
   picture: string
 } 
-
