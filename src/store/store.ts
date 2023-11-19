@@ -1,9 +1,9 @@
 import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
-import charactersReducer from '../slice/hobbies.slice';
+import hobbiesReducer from '../slice/hobbies.slice';
 
 export const store = configureStore({
   reducer: {
-    hobbieState: charactersReducer,
+    hobbieState: hobbiesReducer,
   },
 });
 

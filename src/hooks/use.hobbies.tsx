@@ -4,6 +4,7 @@ import { ApiRepo } from '../services/api.repo';
 import { useCallback, useMemo } from 'react';
 import { Hobbie } from '../model/hobbies';
 import { loadHobbieThunk, updateHobbieThunk } from '../slice/hobbies.thunks';
+import { setCurrentHobbie } from '../slice/hobbies.slice';
 
 export function useHobbies() {
   const { hobbies: hobbies } = useSelector(
@@ -19,18 +20,17 @@ export function useHobbies() {
     } catch (error) {
       console.log((error as Error).message);
     }
-  }, [dispatch, repo]);
+  }, [repo]);
 
   const updateHobbie = async (
     id: Hobbie['id'],
-    updatedHobbie: Partial<Hobbie>
+    hobbie: Partial<Hobbie>
   ) => {
     try {
-
       dispatch(updateHobbieThunk({
         id,
         repo,
-        updatedHobbie,
+        updatedHobbie: hobbie,
       })
     );
   } catch (error) {
@@ -38,9 +38,13 @@ export function useHobbies() {
   }
 };
 
+const handleDetailsPage = async (hobbie:Hobbie) => {
+  dispatch(setCurrentHobbie(hobbie));
+};
   return {
-    loadHobbies: loadHobbies,
+    loadHobbies,
     hobbies,
     updateHobbie,
+    handleDetailsPage,
   };
 }

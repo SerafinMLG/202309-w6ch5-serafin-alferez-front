@@ -5,17 +5,27 @@ import { loadHobbieThunk, updateHobbieThunk } from './hobbies.thunks';
 type HobbieState = {
   hobbies: Hobbie[];
   hobbieState: 'idle' | 'loading' | 'error';
+  currentHobbie: Hobbie | null;
 };
 
 const initialState: HobbieState = {
   hobbies: [],
   hobbieState: 'idle',
+  currentHobbie: null,
 };
 
 const hobbieSlice = createSlice({
   name: 'hobbie',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentHobbie: (
+      state: HobbieState,
+      { payload }: PayloadAction<Hobbie | null>
+    ) => {
+      state.currentHobbie = payload;
+      return state;
+    },
+  },
   
   extraReducers: (builder) => {
     builder.addCase(loadHobbieThunk.pending, (state: HobbieState) => {
@@ -61,3 +71,4 @@ const hobbieSlice = createSlice({
   });
 
   export default hobbieSlice.reducer;
+  export const { setCurrentHobbie } = hobbieSlice.actions;

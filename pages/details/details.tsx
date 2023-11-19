@@ -1,14 +1,15 @@
-import { useContext } from 'react';
+
 import { Link, useParams } from 'react-router-dom';
-import { AppContext } from '../../context/context';
 import './detalis.scss';
-import { Country } from '../../model/country.types';
+import { Hobbie } from '../../src/model/hobbies';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../src/store/store';
 
 export default function DetailsPage() {
   const { name } = useParams();
-  const { countriesState } = useContext(AppContext);
-  const country = countriesState.country.find(
-    (item: Country) => item.name.common === name
+  const { hobbieState } = useSelector((state: RootState) => state.hobbieState);
+  const hobbie = hobbieState.hobbies.find(
+    (item: Hobbie) => item.name === name
   );
 
   return (
