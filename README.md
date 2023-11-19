@@ -1,19 +1,34 @@
-# Week 4 - Challenge 3
+Week 6 - Challenge 5
+API REST Things I already know / Lo que queráis
+Crea una API REST que se conecte a un fichero JSON, para manipular recursos de tipo cosas que ya sé. El JSON tendrá una sola propiedad de tipo array, donde almacenarán objetos que representarán cosas que hemos aprendido en el bootcamp.
 
-## GoT DOM - React - Typescript
+La API REST debe tener los siguientes endpoints:
 
-Crea un proyecto nuevo en React - TypeScrypt
-Reproduce el challenge Week 6 - Challenge 3
+[GET] /things -> devuelve el array de cosas que ya sé
 
-- Utiliza básicamente el mismo modelo de datos
-  a - La misma estructura de clases -> generamos los datos
-  b - Convierte las clases a un único interfaz y crea un end-point en JSON-server
-  (Puedes usar los datos del fichero data.ts)
+[GET] /things/:idThing -> devuelve una cosa que ya sé
 
-- Utiliza la maqueta original (HTML/CSS) o los componentes que creaste
-  para realizar los componentes de React necesarios para que funcione la aplicación
+[DELETE] /things/:idThing -> borra una cosa que ya sé
 
-- Testa todos los elementos
+[POST] /things -> crea una cosa que ya sé (la recibe en el body)
 
-- Opcionalmente, llevamos la lógica a un Custom Hook
-;
+[PATCH] /things/:id -> modifica una cosa que ya sé (la recibe en el body)
+
+Usamos express con las capas:
+
+app
+router
+controller
+model
+(opcional repo)
+AÑADIMOS un front con REDUX testado
+
+Lista de 'things'
+
+Añadir 'thing'
+
+Borrar 'thing'
+
+Editar 'thing'
+
+Página de detalle
