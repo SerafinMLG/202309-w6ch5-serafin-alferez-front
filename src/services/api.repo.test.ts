@@ -1,5 +1,5 @@
-import { Character } from '../model/hobbies';
-import { ApiRepo } from './api.repo';
+import { Character } from '../entities/hobbies';
+import { ApiRepo } from './api.repo.hobbies';
 
 describe('Given ApiRepo class', () => {
   describe('When we instantiate it and response is ok', () => {

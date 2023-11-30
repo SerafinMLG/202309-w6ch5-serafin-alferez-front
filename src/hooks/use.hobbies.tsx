@@ -1,36 +1,35 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/store';
-import { ApiRepo } from '../services/api.repo';
+
 import { useCallback, useMemo } from 'react';
-import { Hobbie } from '../model/hobbies';
-import { loadHobbieThunk, updateHobbieThunk } from '../slice/hobbies.thunks';
+import { Hobbies } from '../entities/hobbies';
+import { loadHobbiesThunk, updateHobbieThunk } from '../slice/hobbies.thunks';
+import { HobbiesRepo } from '../services/api.repo.hobbies';
 
 export function useHobbies() {
-  const { hobbies: hobbies } = useSelector(
-    (state: RootState) => state.hobbieState
-  );
+
   const dispatch = useDispatch<AppDispatch>();
 
-  const repo = useMemo(() => new ApiRepo(), []);
+  const repo = useMemo(() => new HobbiesRepo(), []);
 
   const loadHobbies = useCallback(async () => {
     try {
-      dispatch(loadHobbieThunk(repo));
+      dispatch(loadHobbiesThunk(repo));
     } catch (error) {
       console.log((error as Error).message);
     }
-  }, [dispatch, repo]);
+  }, [repo]);
 
   const updateHobbie = async (
-    id: Hobbie['id'],
-    updatedHobbie: Partial<Hobbie>
+    id: Hobbies['id'],
+    hobbie: Partial<Hobbies>
   ) => {
     try {
 
-      dispatch(updateHobbieThunk({
+      dispatch(updateHobbiesThunk({
         id,
         repo,
-        updatedHobbie,
+        updatedHobbie: hobbie,
       })
     );
   } catch (error) {
@@ -38,9 +37,13 @@ export function useHobbies() {
   }
 };
 
+const handleDetailsPage = async (hobbie: Hobbies) => {
+  dispatch(setCurrentHobbie(hobbie));
+}
+
   return {
-    loadHobbies: loadHobbies,
-    hobbies,
+    loadHobbies,
     updateHobbie,
+    handleDetailsPage,
   };
 }

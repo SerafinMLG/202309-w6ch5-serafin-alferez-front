@@ -1,9 +1,18 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ApiRepo } from '../services/api.repo';
-import { Hobbie } from '../model/hobbies';
+import { ApiRepo } from '../services/api.repo.hobbies';
+import { Hobbie } from '../entities/hobbies';
 
 
-export const loadHobbieThunk = createAsyncThunk<Hobbie[],ApiRepo>(
+// Thunck -> funcion devuelve un actionCreator
+// Parametros
+// - nombre de la accion
+// - funcion action creator
+// 
+// Tipado 
+// - retorno de la funciona -> payload de la accion sincrona
+// - parametros de la funcion
+
+export const loadHobbiesThunk = createAsyncThunk<Hobbie[],ApiRepo>(
   'hobbies/load', 
   async (repo) => {
     const hobbies = await repo.getHobbies();
