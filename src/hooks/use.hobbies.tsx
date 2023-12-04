@@ -1,10 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../store/store';
-
 import { useCallback, useMemo } from 'react';
 import { Hobbies } from '../entities/hobbies';
 import { loadHobbiesThunk, updateHobbieThunk } from '../slice/hobbies.thunks';
 import { HobbiesRepo } from '../services/api.repo.hobbies';
+import { setCurrentHobbie } from '../slice/hobbies.slice';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../store/store';
 
 export function useHobbies() {
 
@@ -26,7 +26,7 @@ export function useHobbies() {
   ) => {
     try {
 
-      dispatch(updateHobbiesThunk({
+      dispatch(updateHobbieThunk({
         id,
         repo,
         updatedHobbie: hobbie,
