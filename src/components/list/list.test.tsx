@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { List } from './list';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { Character } from '../../model/hobbies';
+import { Character } from '../../entities/hobbies';
 import { useCharacters } from '../../hooks/use.hobbies';
 import charactersReducer from '../../slice/hobbies.slice';
 

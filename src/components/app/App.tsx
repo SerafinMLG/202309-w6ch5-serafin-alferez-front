@@ -1,13 +1,23 @@
-import { Comunication } from '../comunication/comunication';
-import { List } from '../list/list';
+// import { useEffect } from 'react';
+import { AppRoutes } from '../app.routes/app.routes';
+// import { Comunication } from '../comunication/comunication';
+// import { List } from '../list/list';
 import './app.scss';
 
-function App() {
+export function App() {
+  // const { loginWithToken } = useUsers();
+
+  // useEffect(() => {
+  //   loginWithToken();
+  // }, []);
+
   return (
     <>
-      <List></List>
+      {/* <Header></Header> */}
+      <AppRoutes></AppRoutes>;
+      <h1>Holaa!!</h1>
     </>
   );
 }
 
-export default App;
+

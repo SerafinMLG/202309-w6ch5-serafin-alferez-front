@@ -1,4 +1,4 @@
-import { Hobbie } from '../../model/hobbies';
+import { Hobbie } from '../../entities/hobbies';
 
 type Props = {
   info: Hobbie;

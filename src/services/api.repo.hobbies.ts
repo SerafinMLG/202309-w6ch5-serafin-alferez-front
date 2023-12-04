@@ -1,23 +1,23 @@
-import { Hobbie } from '../model/hobbies';
+import { serverUrl } from '../config';
+import { Hobbies } from '../entities/hobbies';
 
-export class ApiRepo {
-  apiUrl = 'http://localhost:2700/hobbies';
 
-  async getHobbies(): Promise<Hobbie[]> {
+export class HobbiesRepo {
+
+  apiUrl = serverUrl + '/hobbies';
+
+  async getHobbies(): Promise<Hobbies[]> {
     const response = await fetch(this.apiUrl);
     if (!response.ok)
       throw new Error(response.status + ' ' + response.statusText);
     return response.json();
   }
 
-  async setHobbies(
-    id: Hobbie['id'],
-    setHobbie: Partial<Hobbie>
-  ): Promise<Hobbie> {
+  async updateHobbie(id: Hobbies['id'], updatedHobbie: Partial<Hobbies>): Promise<Hobbies> {
     const finalUrl = `${this.apiUrl}/${id}`;
     const response = await fetch(finalUrl, {
       method: 'PATCH',
-      body: JSON.stringify(this.setHobbies),
+      body: JSON.stringify(updatedHobbie),
       headers: {
         'Content-Type': 'application/json',
       },
